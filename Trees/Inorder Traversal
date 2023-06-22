@@ -35,3 +35,30 @@ vector<int> getInOrderTraversal(TreeNode *root)
     // Write your code here.
 }
 ```
+## Method 2 - Recursion
+
+# Complexity
+- Time complexity: O(N)
+<!-- Add your time complexity here, e.g. $$O(n)$$ -->
+
+- Space complexity: O(N)
+<!-- Add your space complexity here, e.g. $$O(n)$$ -->
+
+# Code
+```
+void answer(TreeNode *root , vector<int>&ans){
+    if(root==NULL)
+    return;
+
+    answer(root->left,ans);
+    ans.push_back(root->data);
+    answer(root->right , ans);
+}
+vector<int> getInOrderTraversal(TreeNode *root)
+{
+    vector<int>ans;
+    answer(root,ans);
+    return ans;
+    // Write your code here.
+}
+```
