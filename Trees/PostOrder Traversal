@@ -1,0 +1,60 @@
+# Postorder Traversal
+
+## Method 1
+
+### Recursion
+
+'''
+void answer(TreeNode *root , vector<int>&ans){
+    if(root==NULL)
+    return;
+
+    
+    answer(root->left,ans);
+    answer(root->right , ans);
+    ans.push_back(root->data);
+}
+vector<int> getPostOrderTraversal(TreeNode *root)
+{
+    vector<int>ans;
+    answer(root,ans);
+    return ans;
+   
+    // Write your code here.
+}
+'''
+## Method 2
+
+### Two Stacks
+
+'''
+vector<int> getPostOrderTraversal(TreeNode *root)
+{
+    vector<int>ans;
+    if(root==NULL)return ans;
+    stack<TreeNode*>st1 , st2;
+    TreeNode*curr=root;
+    st1.push(root);
+    while(!st1.empty()){
+        root=st1.top();
+        st1.pop();
+        st2.push(root);
+        if(root->left!=nullptr)
+        st1.push(root->left);
+        if(root->right!=nullptr)
+        st1.push(root->right);
+    }
+    while(!st2.empty()){
+        //TreeNode*temp=st2.top
+        ans.push_back((st2.top())->data);
+        st2.pop();
+    }
+    return ans;
+    // Write your code here.
+}
+
+'''
+
+# Method 3
+
+# 
