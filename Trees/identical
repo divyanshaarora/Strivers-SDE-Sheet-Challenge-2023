@@ -1,0 +1,15 @@
+bool identicalTrees(BinaryTreeNode<int>* p, BinaryTreeNode<int>* q) {
+    // Write your code here. 
+    if(p == nullptr && q == nullptr)
+        return true;
+        if(p == nullptr && q!=nullptr)
+        return false;
+        if(p!=nullptr && q==nullptr)
+        return false;
+        bool left = identicalTrees(p->left,q->left);
+        bool right = identicalTrees(p->right , q->right);
+        bool curr = (p->data==q->data);
+        if(left && right && curr)
+        return true;
+        return false;	 
+}
